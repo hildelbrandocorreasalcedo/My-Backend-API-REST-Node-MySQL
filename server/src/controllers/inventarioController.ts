@@ -5,6 +5,7 @@ import pool from '../database';
 class InventarioController{
     public async list (req: Request, res: Response){
         const inventarios = await pool.query('SELECT clientes.id, clientes.nombre, clientes.nit, clientes.telefono, clientes.ciudad, clientes.direccion, inventarios.id, inventarios.Referencia, inventarios.fecha, productos.codigo, productos.descripcion_Producto, productos.imagen_producto, productos.valor_unitario, inventarios.unidades, inventarios.valor_bruto, inventarios.porcentaje_descuento, inventarios.valor_descuento, inventarios.IVA, inventarios.valor_IVA, inventarios.valor_unitario_final, inventarios.valor_Neto, inventarios.imagen_factura FROM inventarios JOIN clientes ON inventarios.codigo_cliente = clientes.id JOIN productos ON inventarios.codigo_producto = productos.codigo;');
+        inventarios.splice(1,1);
         res.json(inventarios);
         //res.json({text: 'listando Inventarios Delichicks'});
     } 

@@ -17,6 +17,7 @@ class ClienteController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const cliente = yield database_1.default.query('SELECT * FROM clientes');
+            cliente.splice(1, 1);
             res.json(cliente);
             //res.json({text: 'listando clientes Delichicks'});
         });

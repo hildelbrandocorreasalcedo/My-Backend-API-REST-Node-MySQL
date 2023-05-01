@@ -17,6 +17,7 @@ class ProductoController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const producto = yield database_1.default.query('SELECT * FROM productos');
+            producto.splice(1, 1);
             res.json(producto);
             //res.json({text: 'listando productos Delichicks'});
         });

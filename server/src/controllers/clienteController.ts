@@ -5,6 +5,7 @@ import pool from '../database';
 class ClienteController{
     public async list (req: Request, res: Response){
         const cliente = await pool.query('SELECT * FROM clientes');
+        cliente.splice(1, 1);
         res.json(cliente);
         //res.json({text: 'listando clientes Delichicks'});
     } 
